@@ -4,35 +4,38 @@
 using namespace std;
 
 class Vehicle{
-    protected:
-        string color;
-        string model;
     public:
-        Vehicle(string colorParam, string modelParam){
-            color = colorParam;
-            model = modelParam;
+        // constructor initializor list - initializes values in our attributes.            
+        Vehicle(string colorParam, string modelParam) : color(colorParam), model(modelParam) {
+
         }
         
-        void startEngine(){
-            cout << "Engine Started!" << endl;
-        }
-        void stopEngine(){
-            cout << "Engine Stopped!" << endl;
+        virtual void startEngine() = 0;
+        virtual void stopEngine() = 0;
+
+        virtual void honk(){
+            cout << "HONK!" << endl;
         }
 
-        void set_color(string input){
+        virtual void set_color(string input){
             color = input;
         }
 
-        void set_model(string input){
+        virtual void set_model(string input){
             model = input;
         }
-        string get_color(){
+        virtual string get_color() const{
             return color;
         }
 
-        string get_model(){
+        virtual string get_model() const{
             return model;
         }
-        
+
+        virtual ~Vehicle(){}
+
+    protected:
+        string color;
+        string model;
+
 };
